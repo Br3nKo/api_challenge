@@ -1,0 +1,206 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: 1.1.0
+  title: API challenge
+  description: Create, edit or retrieve countries
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: Countries
+paths:
+  /countries/{id}:
+    get:
+      summary: retrieve information of certain country
+      tags:
+        - Countries
+      parameters:
+        - $ref: '#/components/parameters/CountryId'
+      responses:
+        '200':
+          description: Succesfull retrieval information of certain country
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        '404':
+          description: Organization was not found
+    put:
+      summary: update country info
+      tags:
+        - Countries
+      parameters:
+        - $ref: '#/components/parameters/CountryId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CountryCreate'
+      responses:
+        '200':
+          description: Succesfull update of country
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+        '404':
+          description: Country was not found
+  /countries:
+    get:
+      summary: retrieve country information
+      tags:
+        - Countries
+      parameters:
+        - $ref: '#/components/parameters/CountryCodeFiltr'
+        - $ref: '#/components/parameters/PageLimit'
+        - $ref: '#/components/parameters/PageOffset'  
+      responses:
+        '200':
+          description: Succesfull retrieval of multiple countries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Countries'
+    post:
+      summary: create country
+      tags:
+        - Countries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CountryCreate'
+      responses:
+        '201':
+          description: Succesfully create a country
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
+components:
+  schemas:
+    Links:
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+        previous:
+          type: string
+          format: uri
+    Pagination:
+      type: object
+      required:
+        - count
+        - offset
+        - limit
+      properties:
+        count:
+          type: integer
+          format: int32
+          minimum: 0
+        offset:
+          type: integer
+          format: int32
+          minimum: 0
+        limit:
+          type: integer
+          format: int32
+          minimum: 0
+    CollectionResult:
+      type: object
+      required:
+        - count
+        - next
+        - previous
+      properties:
+        links:
+          $ref: '#/components/schemas/Links'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    CountryCreate:
+      required:
+        - name
+        - countryCode
+      properties:
+        name:
+          type: string
+          example: 'Czech Republic'
+        countryCode:
+          type: string
+          example: 'CZ'
+    Country:
+      allOf:
+        - $ref: '#/components/schemas/CountryCreate'
+        - type: object
+      required:
+        - id
+        - groupId
+      properties:
+        id:
+          type: integer
+          example: 123
+        createdAt:
+          type: string
+          format: date-time
+        groupId:
+          type: integer
+          example: 123
+    Countries:
+      allOf:
+        - $ref: '#/components/schemas/CollectionResult'
+        - type: object
+      required:
+        - results
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Country'  
+  parameters:
+    PageLimit:
+      name: limit
+      in: query
+      required: false
+      description: Limits the number of items on a page
+      schema:
+        type: integer
+        default: 50
+    PageOffset:
+      name: offset
+      in: query
+      description: Specifies the page number of the artists to be displayed
+      schema:
+        type: integer
+    CountryId:
+      name: id
+      in: path
+      required: true
+      description: 'Unique identifier of country'
+      schema:
+        type: integer
+        example: 117
+    CountryCodeFiltr:
+      name: country-code
+      in: query
+      description: Retrieve info for specific country code
+      schema:
+        type: string
+      required: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
