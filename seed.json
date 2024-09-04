@@ -1,0 +1,52 @@
+[
+    {
+        "model": "app.country",
+        "pk": 1,
+        "fields": {
+            "name": "Czech Republic",
+            "countryCode": "CZ",
+            "createdAt": "2024-09-04T10:59:58.125Z",
+            "groupId": 1
+        }
+    },
+    {
+        "model": "app.country",
+        "pk": 2,
+        "fields": {
+            "name": "Germany",
+            "countryCode": "DE",
+            "createdAt": "2024-09-04T10:59:58.125Z",
+            "groupId": 2
+        }
+    },
+    {
+        "model": "app.country",
+        "pk": 3,
+        "fields": {
+            "name": "United States",
+            "countryCode": "US",
+            "createdAt": "2024-09-04T10:59:58.125Z",
+            "groupId": 3
+        }
+    },
+    {
+        "model": "app.country",
+        "pk": 4,
+        "fields": {
+            "name": "Japan",
+            "countryCode": "JP",
+            "createdAt": "2024-09-04T10:59:58.125Z",
+            "groupId": 4
+        }
+    },
+    {
+        "model": "app.country",
+        "pk": 5,
+        "fields": {
+            "name": "Brazil",
+            "countryCode": "BR",
+            "createdAt": "2024-09-04T10:59:58.125Z",
+            "groupId": 5
+        }
+    }
+]
