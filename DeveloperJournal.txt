@@ -1,0 +1,6 @@
+# Issues and notes 
+- I used VScode - pipenv, although I am more familiar with pycharm. I did not have my personal laptop with me so I developed this project with resources available
+- first dilema I've had with this project was which database to use. Sqlite was recommended for simplicity. I decided that if simplicity is indeed prefered, there is no better option than this default django db.
+- another dilema was whether to use basic API view or generic API view. This was just a quick thought, because generic views are much more readable. I also considered Mixins, but I lack expertise in this area.
+- the last dilema was how to validate offset and limit query params, I decided for separate utils.py file, rather than creating a new method in the view
+- I am aware that one huge commit is a "no no" for a standard project, but I hope you will forgive me considering the simplicity of this project
