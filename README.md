@@ -15,7 +15,7 @@ REST API for retrieving, creating and updating countries
 - application runs on localhost port 8000
 
 ## Usage 
-Use following endpoints either with your browser or som tool e.g. Postman 
+Use following endpoints either with your browser or some suitable tool e.g. Postman 
 - http://127.0.0.1:8000/countries/  (GET, POST)
 - http://127.0.0.1:8000/countries/≤id>/ (GET, PUT, DELETE)
 
