@@ -1,9 +1,12 @@
 # Django REST API challenge
 REST API for retrieving, creating and updating countries
 
-## Prerequisities
-- Python
-- Django Rest Framework 
+## Dependencies
+- `Python >3.10` && `Poetry`
+- run `poetry install`
+- run `poetry shell`
+
+**All the following commands are run from poetry shell**
 
 ## Migrate and seed database
 - `python manage.py makemigrations`
